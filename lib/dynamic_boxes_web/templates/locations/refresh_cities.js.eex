@@ -1,0 +1,1 @@
+$("#cities_select").empty().append("<%= escape_javascript render("city_options.html", cities: @cities) %>");

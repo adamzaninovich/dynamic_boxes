@@ -1,0 +1,3 @@
+<%= for city <- @cities do %>
+  <option value="<%= city.id %>"><%= city.name %></option>
+<% end %>

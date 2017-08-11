@@ -1,0 +1,14 @@
+<%= form_for @conn, locations_path(@conn, :show), [as: :trip, method: :get], fn(f) -> %>
+  <%= select(f, :country_id, Enum.map(@countries, fn(c) -> {c.name, c.id} end), prompt: "", id: "countries_select") %>
+  <%= select(f, :city_id, [], prompt: "Choose a country", id: "cities_select") %>
+  <%= submit "Go!" %>
+<% end %>
+
+<script>
+$(document).ready(function() {
+  $(document).on('change', '#countries_select', function(_event) {
+    var country_id = $("#countries_select option:selected").val()
+    $.getScript('refresh_cities/' + country_id)
+  });
+});
+</script>
